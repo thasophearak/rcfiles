@@ -38,8 +38,6 @@ set grepprg=ack-grep " Set ACK as a default grep
 set tags=./tags; " Set tags directory
 set autoindent " Auto indention should be on
 
-
-
 filetype plugin indent on
 
 " Ruby stuff: Thanks Ben :)
@@ -56,14 +54,12 @@ augroup END
 " ================
 
 " Syntax highlighting and theme
+
 syntax enable
+
 set background=dark
 colorscheme solarized
-
-" Better? completion on command line
-set wildmenu
-" What to do when I press 'wildchar'. Worth tweaking to see what feels right.
-set wildmode=list:full
+let g:solarized_termcolors=256
     
 " Lovely linenumbers
 set nu
@@ -71,5 +67,5 @@ set nu
 " This should provide aotocomplet out of the box
 set wildmode=longest,list,full
 set wildmenu
-
-
+map <Esc><Esc> :w<CR> " Double escape to save a file
+map <leader>t :A<CR> " \t to jump to test file 
