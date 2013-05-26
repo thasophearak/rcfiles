@@ -1,7 +1,7 @@
-set nocompatible               " be iMproved
+set nocompatible " be iMproved
 
 " For vundle
-filetype off                   " required!
+filetype off 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -25,11 +25,11 @@ Bundle 'altercation/vim-colors-solarized'
 " Vim Ruby
 Bundle 'vim-ruby/vim-ruby'
 " Surround your code :)
-
 Bundle 'tpope/vim-surround'
-
-
-
+" Every one should have a pair (Autogenerate pairs for "{[( )
+Bundle 'jiangmiao/auto-pairs'
+" Tab completions
+Bundle 'ervandew/supertab'
 set grepprg=ack-grep " Set ACK as a default grep
 set tags=./tags; " Set tags directory
 set autoindent " Auto indention should be on
@@ -63,3 +63,9 @@ set wildmode=list:full
     
 " Lovely linenumbers
 set nu
+
+" This should provide aotocomplet out of the box
+set wildmode=longest,list,full
+set wildmenu
+
+
