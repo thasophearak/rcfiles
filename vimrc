@@ -30,6 +30,9 @@ Bundle 'tpope/vim-surround'
 Bundle 'jiangmiao/auto-pairs'
 " Tab completions
 Bundle 'ervandew/supertab'
+" CoffeeScript syntax
+Bundle 'kchmck/vim-coffee-script'
+
 set grepprg=ack-grep " Set ACK as a default grep
 set tags=./tags; " Set tags directory
 set autoindent " Auto indention should be on
