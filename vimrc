@@ -32,6 +32,7 @@ Bundle 'jiangmiao/auto-pairs'
 Bundle 'ervandew/supertab'
 " CoffeeScript syntax
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
 
 set grepprg=ack-grep " Set ACK as a default grep
 set tags=./tags; " Set tags directory
