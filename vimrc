@@ -32,7 +32,12 @@ Bundle 'jiangmiao/auto-pairs'
 Bundle 'ervandew/supertab'
 " CoffeeScript syntax
 Bundle 'kchmck/vim-coffee-script'
+" Fuzzu finder for vim (CTRL+P)
 Bundle 'kien/ctrlp.vim'
+" Rspec implementation
+Bundle 'skwp/vim-rspec'
+" Easy motion for easy motion
+Bundle 'Lokaltog/vim-easymotion'
 
 set grepprg=ack-grep " Set ACK as a default grep
 set tags=./tags; " Set tags directory
@@ -62,10 +67,12 @@ colorscheme solarized
 let g:solarized_termcolors=256
     
 " Lovely linenumbers
-set nu
+set rnu
 
 " This should provide aotocomplet out of the box
 set wildmode=longest,list,full
 set wildmenu
 map <Esc><Esc> :w<CR> " Double escape to save a file
 map <leader>t :A<CR> " \t to jump to test file 
+let g:RspecKeymap=0
+map <Leader>c :RunSpec<cr>
