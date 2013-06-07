@@ -69,3 +69,7 @@ set wildmode=longest,list,full
 set wildmenu
 map <Esc><Esc> :w<CR> " Double escape to save a file
 map <leader>t :A<CR> " \t to jump to test file 
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
