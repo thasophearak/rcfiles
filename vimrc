@@ -35,10 +35,11 @@ Bundle 'kchmck/vim-coffee-script'
 " Fuzzu finder for vim (CTRL+P)
 Bundle 'kien/ctrlp.vim'
 " Rspec implementation
-Bundle 'skwp/vim-rspec'
+Bundle 'thoughtbot/vim-rspec'
 " Easy motion for easy motion
 Bundle 'Lokaltog/vim-easymotion'
-
+" Running tests in tmux session
+Bundle 'tpope/vim-dispatch'
 set grepprg=ack-grep " Set ACK as a default grep
 set tags=./tags; " Set tags directory
 set autoindent " Auto indention should be on
@@ -64,18 +65,23 @@ syntax enable
 
 set background=dark
 colorscheme solarized
-let g:solarized_termcolors=256
     
 " Lovely linenumbers
 set rnu
 
-" This should provide aotocomplet out of the box
+" This should provide autocomplete out of the box
 set wildmode=longest,list,full
 set wildmenu
-map <Esc><Esc> :w<CR> " Double escape to save a file
-map <leader>t :A<CR> " \t to jump to test file 
+" Buffer switching
+map <leader>p :bp<CR> " \p previous buffer
+map <leader>n :bn<CR> " \n next buffer
+map <leader>d :bd<CR> " \d delete buffer
+
 let g:RspecKeymap=0
-map <Leader>c :RunSpec<cr>
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
+let g:rspec_command = "Dispatch zeus rspec {spec}"
+
+map <Leader>c :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+map <leader>t :A<CR> " \t to jump to test file
