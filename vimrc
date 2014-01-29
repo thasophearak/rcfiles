@@ -24,6 +24,8 @@ Bundle 'garbas/vim-snipmate'
 Bundle 'tomtom/tcomment_vim'
 " Beutiful solarized theme
 Bundle 'altercation/vim-colors-solarized'
+" Molokai theme
+Bundle 'tomasr/molokai'
 " Vim Ruby
 Bundle 'vim-ruby/vim-ruby'
 " Surround your code :)
@@ -69,8 +71,13 @@ augroup END
 
 syntax enable
 
+" Configs to make Molokai look great
 set background=dark
-colorscheme solarized
+let g:molokai_original=1
+let g:rehash256=1
+set t_Co=256
+colorscheme molokai
+
     
 " Lovely linenumbers
 set nu
@@ -149,6 +156,3 @@ if exists("+undofile")
 	set undodir+=~/.vim/undo//
 	set undofile
 endif
-
-
-
