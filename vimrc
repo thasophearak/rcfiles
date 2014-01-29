@@ -10,6 +10,8 @@ Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "honza/vim-snippets"
 
+" Good looking bottom :)
+Bundle 'bling/vim-airline'
 " Git tools
 Bundle 'tpope/vim-fugitive'
 " Dependency managment
@@ -71,7 +73,7 @@ set background=dark
 colorscheme solarized
     
 " Lovely linenumbers
-set rnu
+set nu
 
 " This should provide autocomplete out of the box
 set wildmode=longest,list,full
@@ -89,6 +91,9 @@ map <Leader>c :call vroom#RunTestFile()<CR>
 map <Leader>s :call vroom#RunNearestTest()<CR>
 map <leader>t :A<CR> " \t to jump to test file
 
+let g:airline_theme='luna'
+let g:airline_powerline_fonts=1
+set laststatus=2
 
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
