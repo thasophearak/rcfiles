@@ -34,12 +34,16 @@ Bundle 'ervandew/supertab'
 Bundle 'kchmck/vim-coffee-script'
 " Fuzzu finder for vim (CTRL+P)
 Bundle 'kien/ctrlp.vim'
-" Rspec implementation
-Bundle 'thoughtbot/vim-rspec'
+" Ruby Tests
+Bundle 'skalnik/vim-vroom'
 " Easy motion for easy motion
 Bundle 'Lokaltog/vim-easymotion'
 " Running tests in tmux session
 Bundle 'tpope/vim-dispatch'
+" Gist
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
+
 set grepprg=ack-grep " Set ACK as a default grep
 set tags=./tags; " Set tags directory
 set autoindent " Auto indention should be on
@@ -77,11 +81,69 @@ map <leader>p :bp<CR> " \p previous buffer
 map <leader>n :bn<CR> " \n next buffer
 map <leader>d :bd<CR> " \d delete buffer
 
-let g:RspecKeymap=0
-let g:rspec_command = "Dispatch zeus rspec {spec}"
+let g:vroom_map_keys = 0
+let g:vroom_use_dispatch = 1
+let g:vroom_use_zeus = 1
 
-map <Leader>c :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+map <Leader>c :call vroom#RunTestFile()<CR>
+map <Leader>s :call vroom#RunNearestTest()<CR>
 map <leader>t :A<CR> " \t to jump to test file
+
+
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
+
+" Removing escape
+ino jj <esc>
+cno jj <c-c>
+vno v <esc>
+
+
+""""""""""""""""""""""""""""""""""""""""
+" BACKUP / TMP FILES
+""""""""""""""""""""""""""""""""""""""""
+if isdirectory($HOME . '/.vim/backup') == 0
+	:silent !mkdir -p ~/.vim/backup >/dev/null 2>&1
+endif
+set backupdir-=.
+set backupdir+=.
+set backupdir-=~/
+set backupdir^=~/.vim/backup/
+set backupdir^=./.vim-backup/
+set backup
+
+" Save your swp files to a less annoying place than the current directory.
+" " If you have .vim-swap in the current directory, it'll use that.
+" " Otherwise it saves it to ~/.vim/swap, ~/tmp or .
+if isdirectory($HOME . '/.vim/swap') == 0
+	:silent !mkdir -p ~/.vim/swap >/dev/null 2>&1
+endif
+set directory=./.vim-swap//
+set directory+=~/.vim/swap//
+set directory+=~/tmp//
+set directory+=.
+
+" viminfo stores the the state of your previous editing session
+set viminfo+=n~/.vim/viminfo
+
+if exists("+undofile")
+	" undofile - This allows you to use undos after exiting and restarting
+	" This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
+	" :help undo-persistence
+	" This is only present in 7.3+
+	if isdirectory($HOME . '/.vim/undo') == 0
+		:silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
+	endif
+	set undodir=./.vim-undo//
+	set undodir+=~/.vim/undo//
+	set undofile
+endif
+
+
+
