@@ -1,0 +1,1 @@
+/home/janjiss/dotfiles/vim/ftplugin/erlang.vim
